@@ -10,9 +10,21 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
+    this.getTop = this.getTop.bind(this);
 
   }
+  componentDidMount() {
+    this.getTop()
+  }
 
+  getTop () {
+    $.ajax ({
+      method: "GET",
+      url: "http://localhost:1128/repos",
+      success: (res) => console.log(res),
+      error: (err) => console.log(err)
+    })
+  }
   onSearch (userName) {
     console.log(`${userName} was searched`);
     // TODO
@@ -21,7 +33,9 @@ class App extends React.Component {
       url: "http://localhost:1128/repos",
       data: JSON.stringify({userName: userName}),
       contentType: "application/json",
-      success: () => console.log('successfully POST'),
+      success: () => {
+        // we want to do a GET req to server
+      },
       error: (err) => console.log(err)
     })
   }

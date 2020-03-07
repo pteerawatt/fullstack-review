@@ -15,11 +15,14 @@ app.post('/repos', jsonParser, function (req, res) {
   // console.log('POST req was sent here')
   let userName = req.body.userName
   getReposByUsername.getReposByUsername(userName);
+  // res.send('successfully post')
 });
 
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+
+  res.send('get req succ')
 });
 
 let port = 1128;
