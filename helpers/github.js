@@ -1,5 +1,6 @@
 const request = require('request');
 const config = require('../config.js');
+const save = require('../database/index.js')
 
 let getReposByUsername = (userName) => {
   // TODO - Use the request module to request repos for a specific
@@ -17,8 +18,11 @@ let getReposByUsername = (userName) => {
 
   const callback = (error, res, body) => {
     if (!error && res.statusCode === 200) {
-      const info = JSON.parse(body);
-      const reposNames = info.map((i) => i.name)
+      let info = JSON.parse(body);
+      let reposNames = info.map((repoObj) => {
+        save.save(repoObj.id, repoObj.name, repoObj.owner.login, repoObj.description, repoObj.forks_count)
+      } )
+
       console.log('repo name: ' + JSON.stringify(reposNames))
     } else {
       console.log(error)

@@ -15,7 +15,6 @@ app.post('/repos', jsonParser, function (req, res) {
   // console.log('POST req was sent here')
   let userName = req.body.userName
   getReposByUsername.getReposByUsername(userName);
-  // console.log(userName + ' is the git username')
 });
 
 app.get('/repos', function (req, res) {
