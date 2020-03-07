@@ -22,8 +22,6 @@ let getReposByUsername = (userName) => {
       let reposNames = info.map((repoObj) => {
         save.save(repoObj.id, repoObj.name, repoObj.owner.login, repoObj.description, repoObj.forks_count)
       } )
-
-      console.log('repo name: ' + JSON.stringify(reposNames))
     } else {
       console.log(error)
     }
