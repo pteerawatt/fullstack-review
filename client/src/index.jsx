@@ -22,12 +22,12 @@ class App extends React.Component {
       method: "GET",
       url: "http://localhost:1128/repos",
       success: (res) => {
-        console.log(res)
         this.setState({repos: res})
       },
       error: (err) => console.log(err)
     })
   }
+
   onSearch (userName) {
     // console.log(`${userName} was searched`);
     // TODO
@@ -46,8 +46,8 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
       <Search onSearch={this.onSearch.bind(this)}/>
+      <RepoList repos={this.state.repos}/>
     </div>)
   }
 }

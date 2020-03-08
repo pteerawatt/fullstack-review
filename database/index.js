@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = new mongoose.Schema({
   // TODO: your schema here!
-  id: { type: Number, unique: true },
+  _id: Number,
   url: { type: String, unique: true },
   name: String,
   owner: String,
@@ -19,7 +19,7 @@ let save = (id, url, name, login, description, forks_count) => {
   // This function should save a repo or repos to
   // the MongoDB
   var newRepo = new Repo({
-    'id': id,
+    '_id': id,
     'url': url,
     'name': name,
     'owner': login,
