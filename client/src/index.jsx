@@ -21,12 +21,15 @@ class App extends React.Component {
     $.ajax ({
       method: "GET",
       url: "http://localhost:1128/repos",
-      success: (res) => console.log(res),
+      success: (res) => {
+        console.log(res)
+        this.setState({repos: res})
+      },
       error: (err) => console.log(err)
     })
   }
   onSearch (userName) {
-    console.log(`${userName} was searched`);
+    // console.log(`${userName} was searched`);
     // TODO
     $.ajax({
       method: "POST",
@@ -34,7 +37,7 @@ class App extends React.Component {
       data: JSON.stringify({userName: userName}),
       contentType: "application/json",
       success: () => {
-        // we want to do a GET req to server
+        this.getTop();
       },
       error: (err) => console.log(err)
     })

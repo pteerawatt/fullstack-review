@@ -20,7 +20,7 @@ let getReposByUsername = (userName) => {
     if (!error && res.statusCode === 200) {
       let info = JSON.parse(body);
       let reposNames = info.map((repoObj) => {
-        save.save(repoObj.id, repoObj.name, repoObj.owner.login, repoObj.description, repoObj.forks_count)
+        save.save(repoObj.id, repoObj.url, repoObj.name, repoObj.owner.login, repoObj.description, repoObj.forks_count)
       } )
     } else {
       console.log(error)

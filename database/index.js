@@ -4,6 +4,7 @@ mongoose.connect('mongodb://localhost/fetcher');
 let repoSchema = new mongoose.Schema({
   // TODO: your schema here!
   id: { type: Number, unique: true },
+  url: { type: String, unique: true },
   name: String,
   owner: String,
   description: String,
@@ -13,12 +14,13 @@ let repoSchema = new mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (id, name, login, description, forks_count) => {
+let save = (id, url, name, login, description, forks_count) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
   var newRepo = new Repo({
     'id': id,
+    'url': url,
     'name': name,
     'owner': login,
     'description': description,
@@ -31,4 +33,5 @@ let save = (id, name, login, description, forks_count) => {
   })
 }
 
+module.exports.Repo = Repo;
 module.exports.save = save;
